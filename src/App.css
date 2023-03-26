@@ -1,0 +1,113 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.gameCreatorSection, .gameResultsSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #000;
+  height: auto;
+  min-height: 500px;
+}
+
+.gameCreatorSection h3, .gameResultsSection h3 {
+  width: 100%;
+  border-bottom: 1px solid #000;
+  text-align: center;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.gameCreatorSection {
+  margin-right: 20px;
+}
+
+.teamSelection {
+  padding: 5px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.teamSelection select {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+.gameCreatorSection button {
+  margin-top: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 120px;
+  height: 30px;
+  outline: none;
+  background-color: #e36812;
+  color: white;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.gameCreatorSection button:hover {
+  background-color: #e18443;
+  cursor: pointer;
+}
+
+.gameResultsSection .gameResult {
+  font-size: 14px;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.gameResultsSection .gameResult span {
+  margin: 0 3px;
+}
+
+.gameResultsSection .gameResult .editScoreInput {
+  max-width: 40px;
+}
+
+.gameResultsSection .gameResult .deleteButton {
+  background-color: #ff0000;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 14px;
+  padding: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.gameResultsSection .gameResult .deleteButton:hover {
+  background-color: #ff4d4d;
+}
+
+.gameResultsSection .gameResult .updateButton {
+  background-color: #e5880d;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 14px;
+  padding: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.gameResultsSection .gameResult .updateButton:hover {
+  background-color: #e5a84d;
+}
