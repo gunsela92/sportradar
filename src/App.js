@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 
 function App() {
   const [gameList, setGameList] = useState([]);
+  const [showError, setShowError] = useState(false);
 
   const loadFromLocalStorage = () => { // load the game list from local storage
     const savedGameList = JSON.parse(localStorage.getItem("gameList"));
@@ -18,12 +19,35 @@ function App() {
   }, []);
 
   const addGame = (game) => { // add the new game to the game list
-    const maxId = Math.max(...gameList.map(game => game.id));
-    game.id = maxId + 1;
-    const newGameList = [...gameList, game];
+    const games = gameList.find(item => item.home === game.home || item.away === game.away || item.home === game.away || item.away === game.home);
+    if (!game.home || !game.away || games) {
+      setShowError(true);
+      return;
+    }
+    if (gameList.length === 0) {
+      game.id = 1;
+    } else {
+      const maxId = Math.max(...gameList.map(game => game.id));
+      game.id = maxId + 1;
+    }
+    const gameData = {
+      ...game,
+      homeScore: 0,
+      awayScore: 0
+    }
+    const newGameList = [...gameList, gameData];
     setGameList(newGameList);
     saveToLocalStorage(newGameList);
   }
+
+  useEffect(() => {
+    if (showError) {
+      setTimeout(() => {
+        setShowError(false);
+      }, 3000);
+    }
+  }, [showError]);
+
 
   const deleteGame = (id) => { // delete & remove the game from the game list
     const newGameList = gameList.filter((game) => game.id !== id);
@@ -48,6 +72,9 @@ function App() {
 
   return (
     <div className="App">
+      {showError && (
+        <p className={"error"}>Game already exists or missing home or away team</p>
+      )}
       <GameCreator addGame={addGame} />
       <GameResults gameList={gameList} deleteGame={deleteGame} updateGame={updateGame} />
     </div>

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import countryList from "../../helpers/countryList";
 
 const GameCreator = ({addGame}) => {
-  const [selectedTeams, setSelectedTeams] = useState({"home": "", "away": "", "homeScore": 0, "awayScore": 0});
+  const [selectedTeams, setSelectedTeams] = useState({"home": "", "away": ""});
 
   const handleTeamSelection = (event) => { // prepare the selected teams for the new game in an object with scores
     const {name, value} = event.target;
@@ -14,12 +14,12 @@ const GameCreator = ({addGame}) => {
   const handleNewGame = () => { // add the new game to the game list
     if (selectedTeams.home && selectedTeams.away) {
       addGame(selectedTeams);
-      setSelectedTeams({"home": "", "away": "", "homeScore": 0, "awayScore": 0})
+      setSelectedTeams({"home": "", "away": ""})
     }
   }
 
   const resetForm = () => { // reset the form
-    setSelectedTeams({"home": "", "away": "", "homeScore": 0, "awayScore": 0})
+    setSelectedTeams({"home": "", "away": ""})
   }
 
   return (

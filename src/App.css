@@ -7,6 +7,16 @@
   box-sizing: border-box;
 }
 
+.error {
+  position: absolute;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .gameCreatorSection, .gameResultsSection {
   width: 100%;
   display: flex;
@@ -15,6 +25,7 @@
   border: 1px solid #000;
   height: auto;
   min-height: 500px;
+  margin-top: 50px;
 }
 
 .gameCreatorSection h3, .gameResultsSection h3 {

@@ -28,6 +28,13 @@ const GameResults = ({gameList, deleteGame, updateGame}) => {
     }
     updateGame(game.id, updatedGame);
     setUpdatingGameId(-1);
+    setUpdatedResults({"homeScore": 0, "awayScore": 0});
+  }
+
+  const handleDelete = (gameId) => { // delete the game from the game list and reset the states to default
+    deleteGame(gameId);
+    setUpdatingGameId(-1);
+    setUpdatedResults({"homeScore": 0, "awayScore": 0});
   }
 
   return (
@@ -56,7 +63,7 @@ const GameResults = ({gameList, deleteGame, updateGame}) => {
             {updatingGameId === -1 && (
               <button className={"updateButton"} onClick={() => handleUpdateClick(game)}>Update</button>
             )}
-            <button className={"deleteButton"} onClick={() => deleteGame(game.id)}>Delete</button>
+            <button className={"deleteButton"} onClick={() => handleDelete(game.id)}>Delete</button>
           </div>
         </div>
       ))}
